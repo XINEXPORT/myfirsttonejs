@@ -1,0 +1,35 @@
+
+body{
+    display: grid;
+    grid: repeat(6, 60px) / repeat(4, 60px);
+    gap: 10px;
+    justify-content: center;
+  }
+
+  h1{
+    text-align: left;
+    font-size: large;
+  }
+
+  div{
+    background: red;
+  }
+
+  div:first-child{
+    background: yellow;
+  }
+  div:nth-child(3){
+    background: lightskyblue;
+  }
+  div:nth-child(4n){
+    border-radius: 30px;
+  }
+  div:nth-child(4n + 2){
+    background: green;
+  }
+  div:last-child{
+    background: pink;
+  }
+  div:nth-child(12){
+    background: blue;
+  }

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+	<head>	
+		<meta charset="utf-8" />
+		<title>My First Synth</title>
+    <link rel="stylesheet" href="/styles.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- LOAD Tone.js from unpkg -->
+		<script src="http://unpkg.com/tone"></script>
+		<script>
+			function playNote() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("C4", "8n");
+			}
+      function playNote2() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("D3", "8n");
+			}
+      function playNote3() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("F4", "8n");
+			}
+      function playNote4() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("B2", "8n");
+			}
+      function playNote5() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("E5", "8n");
+			}
+      function playNote6() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("A2", "8n");
+			}
+      function playNote7() {
+				const synth = new Tone.Synth().toDestination();
+				synth.triggerAttackRelease("G5", "8n");
+			}
+		</script>
+	</head>
+
+  <h1> My First Synth </h1>
+
+<body>
+<div class = "btn" onclick="playNote()"></div>
+<div class = "btn" onclick="playNote2()"></div>
+<div class = "btn" onclick="playNote3()"></div>
+<div class = "btn" onclick="playNote4()"></div>
+<div class = "btn" onclick="playNote5()"></div>
+<div class = "btn" onclick="playNote6()"></div>
+<div class = "btn" onclick="playNote7()"></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<div id="ciao">
+  <div class="prodotto"></div>
+</div>
+	</body>
+</html>
