@@ -22,14 +22,4 @@ nunjucks.configure('views', {
 });
 
 
-async function showDogPhoto(evt) {
-    const response = await axios.get("https://dog.ceo/api/breeds/image/random");
-    let imgUrl = response.data.message;
-    console.log(response);
-    document.querySelector("#dog-image").innerHTML = `<img src = ${imgUrl}>`;
-  }
-  
-  document.querySelector('#get-dog-image').addEventListener('click', showDogPhoto);
-
-
 

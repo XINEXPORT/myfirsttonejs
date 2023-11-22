@@ -89,7 +89,20 @@
 		}).connect(feedbackDelay);
 		tom.triggerAttackRelease("A2", "32n");
 	}
+	function playFreeverb(){
+		const freeverb = new Tone.Freeverb().toDestination();
+		freeverb.dampening = 1000;
+		const synth = new Tone.NoiseSynth().connect(freeverb);
+		synth.triggerAttackRelease(0.05);
+	}
+	function playJCReverb(){
+		const reverb = new Tone.JCReverb(0.4).toDestination();
+		const delay = new Tone.FeedbackDelay(0.5);
+		const synth = new Tone.DuoSynth().chain(delay, reverb);
+		synth.triggerAttackRelease("A4", "8n");
+	}
 
+	
 
 
 		</script>
@@ -114,8 +127,8 @@
 <div class = "btn" onclick="playChorus()"></div>
 <div class = "btn" onclick="playDistortion()"></div>
 <div class = "btn" onclick="playFeedbackDelay()"></div>
-<div></div>
-<div></div>
+<div class = "btn" onclick="playFreeverb()"></div>
+<div class = "btn" onclick ="playJCReverb()"></div>
 <div></div>
 <div></div>
 <div></div>
