@@ -8,34 +8,90 @@
 		<!-- LOAD Tone.js from unpkg -->
 		<script src="http://unpkg.com/tone"></script>
 		<script>
-			function playNote() {
+	  function playNote() {
 				const synth = new Tone.Synth().toDestination();
 				synth.triggerAttackRelease("C4", "8n");
 			}
       function playNote2() {
-				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("D3", "8n");
+				const fmSynth = new Tone.FMSynth().toDestination();
+				fmSynth.triggerAttackRelease("D3", "8n");
 			}
       function playNote3() {
-				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("F4", "8n");
+				const amSynth = new Tone.AMSynth().toDestination();
+				amSynth.triggerAttackRelease("F4", "8n");
 			}
       function playNote4() {
-				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("B2", "8n");
+				const duoSynth = new Tone.DuoSynth().toDestination();
+				duoSynth.triggerAttackRelease("B2", "8n");
+				duoSynth.triggerAttackRelease("B3", "4n");
 			}
       function playNote5() {
-				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("E5", "8n");
+				const memSynth = new Tone.MembraneSynth().toDestination();
+				memSynth.triggerAttackRelease("E5", "8n");
+				memSynth.triggerAttackRelease("E6", "4n");
 			}
       function playNote6() {
-				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("A2", "8n");
+				const metalSynth = new Tone.MetalSynth().toDestination();
+				metalSynth.triggerAttackRelease("A2", "8n");
+				metalSynth.triggerAttackRelease("A4", "4n");
 			}
       function playNote7() {
-				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("G5", "8n");
+				const monoSynth = new Tone.MonoSynth().toDestination();
+				monoSynth.triggerAttackRelease("G5", "8n");
+				monoSynth.triggerAttackRelease("G4", "4n");
 			}
+	  function playNote8() {
+				const noiseSynth = new Tone.PolySynth().toDestination();
+				noiseSynth.triggerAttackRelease("D7", "8n");
+				noiseSynth.triggerAttackRelease("D8", "4n");
+			}
+	  function playNote9() {
+				const pluckSynth = new Tone.PluckSynth().toDestination();
+				pluckSynth.triggerAttack("C5", "+0.5");
+				pluckSynth.triggerAttack("C4", "+0.5");
+			}
+	  function playNote10() {
+				const noiseSynth = new Tone.NoiseSynth().toDestination();
+				noiseSynth.triggerAttackRelease("C5", "+0.5");
+				noiseSynth.triggerAttackRelease("C3", "+0.5");
+			}
+	function playAutoWah(){
+		const autoWah = new Tone.AutoWah(50, 6, -30).toDestination();
+		const synth = new Tone.Synth().connect(autoWah);
+		autoWah.Q.value = 6;
+		synth.triggerAttackRelease("C4", "8n");
+	}
+	function playBitCrusher(){
+		const crusher = new Tone.BitCrusher(4).toDestination();
+		const synth = new Tone.Synth().connect(crusher);
+		synth.triggerAttackRelease("C2", +0.5);
+	}
+	function playCheby(){
+		const cheby = new Tone.Chebyshev(50).toDestination();
+		const synth = new Tone.MonoSynth().connect(cheby);
+		synth.triggerAttackRelease("C2", 0.4);
+	}
+	function playChorus(){
+		const chorus = new Tone.Chorus(4, 2.5, 0.5).toDestination().start();
+		const synth = new Tone.PolySynth().connect(chorus);
+		synth.triggerAttackRelease(["C3", "E3", "G3"], "8n");
+	}
+	function playDistortion(){
+		const dist = new Tone.Distortion(0.8).toDestination();
+		const fm = new Tone.FMSynth().connect(dist);
+		fm.triggerAttackRelease("A1", "8n");
+	}
+	function playFeedbackDelay(){
+		const feedbackDelay = new Tone.FeedbackDelay("8n", 0.5).toDestination();
+		const tom = new Tone.MembraneSynth({
+		octaves: 4,
+		pitchDecay: 0.1
+		}).connect(feedbackDelay);
+		tom.triggerAttackRelease("A2", "32n");
+	}
+
+
+
 		</script>
 	</head>
 
@@ -49,6 +105,15 @@
 <div class = "btn" onclick="playNote5()"></div>
 <div class = "btn" onclick="playNote6()"></div>
 <div class = "btn" onclick="playNote7()"></div>
+<div class = "btn" onclick="playNote8()"></div>
+<div class = "btn" onclick="playNote9()"></div>
+<div class = "btn" onclick="playNote10()"></div>
+<div class = "btn" onclick="playAutoWah()"></div>
+<div class = "btn" onclick="playBitCrusher()"></div>
+<div class = "btn" onclick="playCheby()"></div>
+<div class = "btn" onclick="playChorus()"></div>
+<div class = "btn" onclick="playDistortion()"></div>
+<div class = "btn" onclick="playFeedbackDelay()"></div>
 <div></div>
 <div></div>
 <div></div>
@@ -57,15 +122,7 @@
 <div></div>
 <div></div>
 <div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
+
 
 <div id="ciao">
   <div class="prodotto"></div>

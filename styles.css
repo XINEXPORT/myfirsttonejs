@@ -4,11 +4,13 @@ body{
     grid: repeat(6, 60px) / repeat(4, 60px);
     gap: 10px;
     justify-content: center;
+    background: #000066;
   }
 
   h1{
     text-align: left;
     font-size: large;
+    color: white;
   }
 
   div{
