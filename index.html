@@ -10,40 +10,40 @@
 		<script>
 	  function playNote() {
 				const synth = new Tone.Synth().toDestination();
-				synth.triggerAttackRelease("C4", "8n");
+				synth.triggerAttackRelease("C4", "16n");
 			}
       function playNote2() {
 				const fmSynth = new Tone.FMSynth().toDestination();
-				fmSynth.triggerAttackRelease("D3", "8n");
+				fmSynth.triggerAttackRelease("D3", "16n");
 			}
       function playNote3() {
 				const amSynth = new Tone.AMSynth().toDestination();
-				amSynth.triggerAttackRelease("F4", "8n");
+				amSynth.triggerAttackRelease("F4", "16n");
 			}
       function playNote4() {
 				const duoSynth = new Tone.DuoSynth().toDestination();
-				duoSynth.triggerAttackRelease("B2", "8n");
-				duoSynth.triggerAttackRelease("B3", "4n");
+				duoSynth.triggerAttackRelease("B2", "16n");
+				duoSynth.triggerAttackRelease("B3", "16n");
 			}
       function playNote5() {
 				const memSynth = new Tone.MembraneSynth().toDestination();
-				memSynth.triggerAttackRelease("E5", "8n");
-				memSynth.triggerAttackRelease("E6", "4n");
+				memSynth.triggerAttackRelease("E5", "16n");
+				memSynth.triggerAttackRelease("E6", "16n");
 			}
       function playNote6() {
 				const metalSynth = new Tone.MetalSynth().toDestination();
-				metalSynth.triggerAttackRelease("A2", "8n");
-				metalSynth.triggerAttackRelease("A4", "4n");
+				metalSynth.triggerAttackRelease("A2", "16n");
+				metalSynth.triggerAttackRelease("A4", "16n");
 			}
       function playNote7() {
 				const monoSynth = new Tone.MonoSynth().toDestination();
-				monoSynth.triggerAttackRelease("G5", "8n");
-				monoSynth.triggerAttackRelease("G4", "4n");
+				monoSynth.triggerAttackRelease("G5", "16n");
+				monoSynth.triggerAttackRelease("G4", "16n");
 			}
 	  function playNote8() {
 				const noiseSynth = new Tone.PolySynth().toDestination();
-				noiseSynth.triggerAttackRelease("D7", "8n");
-				noiseSynth.triggerAttackRelease("D8", "4n");
+				noiseSynth.triggerAttackRelease("D7", "16n");
+				noiseSynth.triggerAttackRelease("D8", "16n");
 			}
 	  function playNote9() {
 				const pluckSynth = new Tone.PluckSynth().toDestination();
@@ -59,27 +59,27 @@
 		const autoWah = new Tone.AutoWah(50, 6, -30).toDestination();
 		const synth = new Tone.Synth().connect(autoWah);
 		autoWah.Q.value = 6;
-		synth.triggerAttackRelease("C4", "8n");
+		synth.triggerAttackRelease("C4", "16n");
 	}
 	function playBitCrusher(){
 		const crusher = new Tone.BitCrusher(4).toDestination();
 		const synth = new Tone.Synth().connect(crusher);
-		synth.triggerAttackRelease("C2", +0.5);
+		synth.triggerAttackRelease("C2", "16n");
 	}
 	function playCheby(){
 		const cheby = new Tone.Chebyshev(50).toDestination();
 		const synth = new Tone.MonoSynth().connect(cheby);
-		synth.triggerAttackRelease("C2", 0.4);
+		synth.triggerAttackRelease("C2", "16n");
 	}
 	function playChorus(){
 		const chorus = new Tone.Chorus(4, 2.5, 0.5).toDestination().start();
 		const synth = new Tone.PolySynth().connect(chorus);
-		synth.triggerAttackRelease(["C3", "E3", "G3"], "8n");
+		synth.triggerAttackRelease(["C3", "E3", "G3"], "16n");
 	}
 	function playDistortion(){
 		const dist = new Tone.Distortion(0.8).toDestination();
 		const fm = new Tone.FMSynth().connect(dist);
-		fm.triggerAttackRelease("A1", "8n");
+		fm.triggerAttackRelease("A1", "16n");
 	}
 	function playFeedbackDelay(){
 		const feedbackDelay = new Tone.FeedbackDelay("8n", 0.5).toDestination();
@@ -87,7 +87,7 @@
 		octaves: 4,
 		pitchDecay: 0.1
 		}).connect(feedbackDelay);
-		tom.triggerAttackRelease("A2", "32n");
+		tom.triggerAttackRelease("A2", "16n");
 	}
 	function playFreeverb(){
 		const freeverb = new Tone.Freeverb().toDestination();
@@ -99,10 +99,41 @@
 		const reverb = new Tone.JCReverb(0.4).toDestination();
 		const delay = new Tone.FeedbackDelay(0.5);
 		const synth = new Tone.DuoSynth().chain(delay, reverb);
-		synth.triggerAttackRelease("A4", "8n");
+		synth.triggerAttackRelease("A4", ".5n");
 	}
-
-	
+	function playPhaser(){
+		const phaser = new Tone.Phaser({
+		frequency: 15,
+		octaves: 5,
+		baseFrequency: 1000
+		}).toDestination();
+		const synth = new Tone.FMSynth().connect(phaser);
+		synth.triggerAttackRelease("E3", "16n");
+	}
+	function playFMSynth2(){
+		const fmSynth = new Tone.FMSynth().toDestination();
+		const amSynth = new Tone.AMSynth().toDestination();
+		fmSynth.triggerAttackRelease("E2", "16n");
+		amSynth.triggerAttackRelease("E2.5", "16n");
+	}
+	function playChorus2(){
+		const chorus = new Tone.Chorus(4, 0.5).toDestination();
+		const synth1 = new Tone.MembraneSynth().connect(chorus);
+		synth1.triggerAttackRelease(["C3", "E3", "G3"], "16n");
+	}
+	function playChelbPol(){
+		const cheby = new Tone.Chebyshev(10).toDestination();
+		const synth = new Tone.PolySynth().connect(cheby);
+		synth.triggerAttackRelease(["E1", "F1", "C6"], "16n");
+	}
+	function playFinalSynth() {
+				const amSynth = new Tone.AMSynth().toDestination();
+				const monoSynth = new Tone.MonoSynth().toDestination();
+				const duoSynth = new Tone.DuoSynth().toDestination();
+				amSynth.triggerAttackRelease("C2", "16n");
+				monoSynth.triggerAttackRelease("C2", "16n");
+				duoSynth.triggerAttackRelease("C2", "16n");
+			}
 
 
 		</script>
@@ -129,12 +160,11 @@
 <div class = "btn" onclick="playFeedbackDelay()"></div>
 <div class = "btn" onclick="playFreeverb()"></div>
 <div class = "btn" onclick ="playJCReverb()"></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
+<div class = "btn" onclick ="playPhaser()"></div>
+<div class = "btn" onclick ="playFMSynth2()"></div>
+<div class = "btn" onclick ="playChorus2()"></div>
+<div class = "btn" onclick ="playChelbPol()"></div>
+<div class = "btn" onclick ="playFinalSynth()"></div>
 
 
 <div id="ciao">
